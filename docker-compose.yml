@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./.docker/dev/Dockerfile
+      args:
+        - NODE_VERSION=${NODE_VERSION}
+    container_name: next-docker-container
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    ports:
+      - ${APP_DOCKER_DEV_PORT:-3000}:3000
+    command: >
+      bash -c "cp -rfu /cache/node_modules/. /app/node_modules/  
+      && yarn dev"
+    networks:
+      - next-docker-networks
+
+  nginx:
+    depends_on:
+      app:
+        condition: service_started
+    image: nginx:${NGINX_VERSION}
+    container_name: next-docker-nginx-container
+    ports:
+      - ${FROWARD_PORT:-80}:80
+      - ${FROWARD_SSL_PORT:-443}:443
+    volumes:
+      - ./.docker/dev/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${NGINX_HTTPS_CRT}:/etc/nginx/ssl/default.crt
+      - ${NGINX_HTTPS_KEY}:/etc/nginx/ssl/default.key
+    networks:
+      - next-docker-networks
+
+networks:
+  next-docker-networks:
+    driver: bridge
+# 參考來源
+# https://medium.com/@sudiptob2/properly-setting-up-react-development-environment-using-docker-a2de46464d0b
+# https://github.com/sudiptob2/dockerize-react-medium
+# https://stackoverflow.com/questions/31746182/docker-compose-wait-for-container-x-before-starting-y
