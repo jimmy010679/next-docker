@@ -25,7 +25,7 @@
 
 讓本機擁有HTTPS(本機掛憑證)模式
 
-輸入以下指令，將產生兩個檔案，放入電腦用戶目錄底下 `/certificates/`，詳細設定需搭配 `.env` 下 `NGINX_HTTPS_SERVER_NAME` 變數
+- 輸入以下指令，將產生兩個檔案，放入電腦用戶目錄底下 `/certificates/`，詳細設定需搭配 `.env` 下 `NGINX_HTTPS_SERVER_NAME`、`NGINX_HTTPS_CRT`、`NGINX_HTTPS_KEY` 變數
 
 ```bash
 openssl req -x509 -out localhost.example.com.crt -keyout localhost.example.com.key \
@@ -41,7 +41,7 @@ openssl req -x509 -out localhost.example.com.crt -keyout localhost.example.com.k
 
 ### Docker
 
-在根目錄新增 `.env` 檔案
+在根目錄新增 `.env` 檔案，內容如下:
 
 ```log
 ### NGINX VERSION
@@ -66,28 +66,22 @@ APP_DOCKER_DEV_PORT=9000
 ### 本機使用 docker 版本
 
 ```bash
-# docker compose build
 # 重建置
 $ docker compose build
 
-# docker compose up
 # 啟動
 $ docker compose up -d
 
-# docker compose down
 # 關閉
 $ docker compose down
 
-# docker compose ps
 # 查看狀態
 $ docker compose ps
 
-# docker compose logs -f
-# 查看 app logs
+# 查看 logs
 $ docker compose logs -f app
 $ docker compose logs -f nginx
 
-# docker exec
 # 進入 container，安裝套件要先進入容器 
 $ docker exec -it next-docker-container sh
 $ docker exec -it next-docker-container bash
