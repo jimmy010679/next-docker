@@ -54,8 +54,8 @@ NODE_VERSION="18.16.1"
 NGINX_HTTPS_SERVER_NAME="localhost.example.com"
 
 ### NGINX https crt, key
-NGINX_HTTPS_CRT="~/work/verifield.com.crt"
-NGINX_HTTPS_KEY="~/work/verifield.com.key"
+NGINX_HTTPS_CRT="~/work/.certificates/verifield.com.crt"
+NGINX_HTTPS_KEY="~/work/.certificates/verifield.com.key"
 
 ### APP Docker port
 APP_DOCKER_DEV_PORT=9000
