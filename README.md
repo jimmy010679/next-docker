@@ -56,8 +56,6 @@ NGINX_HTTPS_SERVER_NAME="localhost.example.com"
 ### NGINX https crt, key
 NGINX_HTTPS_CRT="~/work/.certificates/verifield.com.crt"
 NGINX_HTTPS_KEY="~/work/.certificates/verifield.com.key"
-
-### APP Docker port
 ```
 
 ## 二、本機開發指令
