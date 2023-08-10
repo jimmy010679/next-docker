@@ -58,7 +58,6 @@ NGINX_HTTPS_CRT="~/work/.certificates/verifield.com.crt"
 NGINX_HTTPS_KEY="~/work/.certificates/verifield.com.key"
 
 ### APP Docker port
-APP_DOCKER_DEV_PORT=9000
 ```
 
 ## 二、本機開發指令
