@@ -88,4 +88,4 @@ $ docker exec -it next-docker-container sh
 $ docker exec -it next-docker-container bash
 ```
 
-瀏覽器輸入 `https://localhost.example.com` 進行開發
+瀏覽器輸入 `https://localhost.example.com:3000` 進行開發
