@@ -53,9 +53,13 @@ NODE_VERSION="18.16.1"
 ### NGINX SERVER NAME
 NGINX_HTTPS_SERVER_NAME="localhost.example.com"
 
-### NGINX https crt, key
+### NGINX HTTPS, CRT, KEY
 NGINX_HTTPS_CRT="~/work/.certificates/verifield.com.crt"
 NGINX_HTTPS_KEY="~/work/.certificates/verifield.com.key"
+
+### NGINX PORT
+FROWARD_PORT=8080
+FROWARD_SSL_PORT=3000
 ```
 
 ## 二、本機開發指令
